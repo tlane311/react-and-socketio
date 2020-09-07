@@ -17,7 +17,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "start": "npm run build && (cd backend && node server)"
+    "start": "npm run build && (cd backend && node server)",
+    "start-pair": "npm run build && (cd backend && node pairingserver)"
   },
   "eslintConfig": {
     "extends": "react-app"
