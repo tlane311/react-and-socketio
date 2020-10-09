@@ -1,19 +1,5 @@
 import React from 'react';
-import io from 'socket.io-client';
-const port = 3000;
-const url = 'http://localhost:'+port;
-const socket = io(url);
-
-function socketIsListening(){
-    socket.on('button', () => console.log('server emitted to webpage socket'));
-    socket.on('waiting', () => console.log('you need to wait'));
-    socket.on('message', message => console.log(message));
-    socket.on('error', error => console.log(error));
-    socket.on('update-game', (moveData) => {
-        console.log(JSON.stringify(moveData))
-    });
-    socket.on('opponent-surrendered', () => console.log('opponent surrendered'))
-}
+import { socketIsListening, socket } from './socket.js';
 
 export class Box extends React.Component{
     constructor(props) {
@@ -23,7 +9,7 @@ export class Box extends React.Component{
             playerIsQueued: false,
             gameState: []
         };
-        socketIsListening();
+        socketIsListening.bind(this)();
     }
     
     async queueClick() {
@@ -43,15 +29,15 @@ export class Box extends React.Component{
         const moveData = numberOfMoves > 0
         ? `${numberOfMoves+1} moves have been performed`
         : `a move has been performed`
-        await socket.emit('move', moveData);
+        socket.emit('move', moveData);
         const nextState = gameState.concat(moveData);
-        await this.setState({
+        this.setState({
             gameState: nextState
         })
     }
 
     async surrenderClick() {
-        await socket.emit('surrender');
+        socket.emit('surrender');
     }
 
     createListElement(data){

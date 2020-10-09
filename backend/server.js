@@ -11,13 +11,13 @@ app.use(express.static('../build'));
 const socket = require('socket.io');
 const io = socket(server);
 io.on('connection', (socket) =>{
-    console.log('browser communicated with server');-
+    console.log('browser communicated with server');
     socket.on('button', data => {
         console.log(data);
         io.sockets.emit('button');
     });
     io.sockets.emit('connect');
-    socket.on('end', () => socket.disconnect(0));
+    socket.on('end', () => socket.disconnect());
 })
 
 //need to work on closing connection
