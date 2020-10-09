@@ -1,6 +1,9 @@
 import React from 'react';
 import { socketIsListening, socket } from './socket.js';
 
+const port = 3000;
+const url = 'http://localhost:'+port;
+
 export class Box extends React.Component{
     constructor(props) {
         super(props);

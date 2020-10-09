@@ -17,7 +17,7 @@ io.on('connection', (socket) =>{
         io.sockets.emit('button');
     });
     io.sockets.emit('connect');
-    socket.on('end', () => socket.disconnect());
+    socket.on('end', () => socket.disconnect(0));
 })
 
 //need to work on closing connection

@@ -2,6 +2,8 @@
 
 In another project, I wanted to build a react application on an express server that utilized socket.io to allow users to interact in realtime. Here, I wanted to strip away all of the unnecessary parts and build a working prototype with those features.
 
+Note, in this app, I have setup two different backends to explore some possbilities (one is server.js and the other is pairingserver.js). One can switch between the two setups by using the two different npm scripts "npm run start" or "npm run start-pair", respectively.
+
 ## The Most Important Parts
 
 * You must install a socket on the frontend and the backend of the web app. (The socket on the backend is sometimes called "socker" as an abbreviation of "socket server")
