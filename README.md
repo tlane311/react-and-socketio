@@ -1,20 +1,20 @@
-# Socket.io, Express and React
+# React, Express and Socket.io
 
 In another project, I wanted to build a react application on an express server that utilized socket.io to allow users to interact in realtime. Here, I wanted to strip away all of the unnecessary parts and build a working prototype with those features.
 
-## Important Notes
+## The Most Important Parts
 
 * You must install a socket on the frontend and the backend of the web app. (The socket on the backend is sometimes called "socker" as an abreviation of "socket server")
 * The (backend) socker is brought online by:
 
-```js
-const socket = require('socket.io');
-const io = socket(server);
-```
+    ```js
+    const socket = require('socket.io');
+    const io = socket(server);
+    ```
 
 * You must write your own "protocol" for the (frontend) client sockets and the (backend) socker to communicate.
 
-* The backend "protocol" is setup with something like:
+* The backend "protocol" is set up with something like:
 
 ```js
 io.on('connection', (socket) =>{
